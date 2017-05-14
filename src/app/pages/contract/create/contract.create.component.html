@@ -1,0 +1,15 @@
+<div>
+  <h2>新建{{ company.name }}的合同</h2>
+  <div style="margin-bottom: 10px;">
+    <p>合同名称</p>
+    <input class="form-control" type="text" [(ngModel)]="contract.name" placeholder="合同名称..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>变更方案</p>
+    <textarea class="form-control" [(ngModel)]="contract.plan"></textarea>
+  </div>
+  <div>
+    <button class="btn btn-sm btn-success" (click)="createContract()">新建</button>
+    <a class="btn btn-sm btn-default" href="/#/pages/company/detail/{{ company.id }}">返回</a>
+  </div>
+</div>

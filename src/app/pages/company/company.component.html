@@ -1,0 +1,17 @@
+<div class="well">
+  <div *ngFor="let company of companies" [class.hide]="!showCompanies()">
+    <h3>
+      <a (click)="getDetail(company)" style="cursor: pointer">{{ company.name }}</a>
+    </h3>
+  </div>
+  <div style="text-align: right">
+    <a class="btn btn-sm btn-success" href="/#/pages/company/create">新建公司</a>
+    <button type="button" class="btn btn-sm btn-primary" [class.hide]="showCompanies()" (click)="setShowFlag(true)">显示公司列表</button>
+    <button type="button" class="btn btn-sm btn-primary" [class.hide]="!showCompanies()" (click)="setShowFlag(false)">隐藏公司列表</button>
+  </div>
+</div>
+<div class='split'></div>
+
+<div class="well">
+  <router-outlet></router-outlet>
+</div>

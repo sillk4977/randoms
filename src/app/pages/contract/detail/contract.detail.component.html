@@ -1,0 +1,67 @@
+<div [class.hide]="edit">
+  <h1>{{ contract.name }}</h1>
+  <div>
+    {{ contract.plan }}
+  </div>
+  <div style="margin: 10px 0px 10px 0px;">
+    <span class="label label-primary">已发日期</span>
+    {{ contract.send_date }}
+  </div>
+  <div style="margin: 10px 0px 10px 0px;">
+    <span class="label label-primary">回签日期</span>
+    {{ contract.sign_date }}
+  </div>
+  <div style="margin: 10px 0px 10px 0px;">
+    <span class="label label-primary">回寄日期</span>
+    {{ contract.send_back_date }}
+  </div>
+  <div style="margin: 10px 0px 10px 0px;">
+    <span class="label label-primary">生效日期</span>
+    {{ contract.effective_date }}
+  </div>
+  <div style="margin: 10px 0px 10px 0px;">
+    <span class="label label-primary">到期日期</span>
+    {{ contract.end_date }}
+  </div>
+  <div style="text-align: right">
+    <button class="btn btn-sm btn-primary" (click)="switchEdit(true)">编辑</button>
+    <a class="btn btn-sm btn-default" href="/#/pages/company/detail/{{ contract.company_id }}/">返回</a>
+  </div>
+</div>
+
+
+<div [class.hide]="!edit">
+  <h2>编辑合同</h2>
+  <div style="margin-bottom: 10px;">
+    <p>合同名称</p>
+    <input class="form-control" type="text" [(ngModel)]="editing.name" placeholder="合同名称..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>变更方案</p>
+    <textarea class="form-control" [(ngModel)]="editing.plan"></textarea>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>已发日期</p>
+    <input class="form-control datetimepicker" type="text" [(ngModel)]="editing.send_date" placeholder="选择日期..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>回签日期</p>
+    <input class="form-control datetimepicker" type="text" [(ngModel)]="editing.sign_date" placeholder="选择日期..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>回寄日期</p>
+    <input class="form-control datetimepicker" type="text" [(ngModel)]="editing.send_back_date" placeholder="选择日期..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>生效日期</p>
+    <input class="form-control datetimepicker" type="text" [(ngModel)]="editing.effective_date" placeholder="选择日期..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>到期日期</p>
+    <input class="form-control datetimepicker" type="text" [(ngModel)]="editing.end_date" placeholder="选择日期..." />
+  </div>
+  <div>
+    <button class="btn btn-sm btn-success" (click)="updateContract()">更新</button>
+    <button class="btn btn-sm btn-default" (click)="switchEdit(false)">取消编辑</button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div *ngIf="company">
+  <h2>{{ company.name }}</h2>
+  <div>{{ company.address }}</div>
+  <div style="text-align: right">
+    <a href="/#/pages/contract/create/company/{{ company.id }}" class="btn btn-sm btn-success">新建合同</a>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>合同编号</th>
+          <th>合同方案</th>
+          <th>已发日期</th>
+          <th>回签日期</th>
+          <th>回寄日期</th>
+          <th>生效日期</th>
+          <th>到期日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contract of company.contracts">
+          <td>{{ contract.id }}</td>
+          <td><a href="/#/pages/contract/detail/{{ contract.id }}">{{ contract.name }}</a></td>
+          <td>{{ contract.send_date }}</td>
+          <td>{{ contract.sign_date }}</td>
+          <td>{{ contract.send_back_date }}</td>
+          <td>{{ contract.effective_date }}</td>
+          <td>{{ contract.end_date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

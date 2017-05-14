@@ -1,0 +1,13 @@
+<div>
+  <div style="margin-bottom: 10px;">
+    <p>公司名称</p>
+    <input class="form-control" type="text" [(ngModel)]="company.name" placeholder="公司名称..." />
+  </div>
+  <div style="margin-bottom: 10px;">
+    <p>公司地址</p>
+    <input class="form-control" type="text" [(ngModel)]="company.address" placeholder="公司地址..." />
+  </div>
+  <div>
+    <button class="btn btn-sm btn-success" (click)="createCompany()">新建</button>
+  </div>
+</div>
