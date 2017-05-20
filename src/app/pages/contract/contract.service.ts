@@ -65,4 +65,17 @@ export class ContractService {
         .toPromise()
         .then(res => res.json() as ContractModel);
     }
+
+    createContract(contract: ContractModel): Promise<number> {
+        return this.http
+        .post('/api/contract/', JSON.stringify(contract))
+        .toPromise()
+        .then(function(res){
+            if(res.status == 201){
+                return res.json().id
+            } else {
+                return 0;
+            }
+        });
+    }
 }

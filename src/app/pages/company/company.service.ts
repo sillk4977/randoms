@@ -27,12 +27,16 @@ export class CompanyService {
         .then(res => res.json() as CompanyModel);
     }
 
-    createCompany(company: CompanyModel): Promise<boolean> {
+    createCompany(company: CompanyModel): Promise<number> {
         return this.http
         .post('/api/company/', JSON.stringify(company), {headers: this.headers})
         .toPromise()
         .then(function(res){
-            return res.status == 201;
+            if (res.status == 201){
+                return res.json().id;
+            } else {
+                return 0;
+            }
         });
     }
 }

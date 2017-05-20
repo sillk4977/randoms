@@ -1,10 +1,11 @@
 /// <reference path="../../../../../node_modules/@types/jquery/index.d.ts" />
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { ContractModel } from '../models';
+import { ContractService } from '../contract.service';
 import { CompanyService } from '../../company/company.service';
 import { CompanyModel } from '../../company/models';
 
@@ -21,7 +22,9 @@ export class ContractCreate implements OnInit {
 
     constructor(
         private companyService: CompanyService,
+        private contractService: ContractService,
         private route: ActivatedRoute,
+        private router: Router,
     ){}
 
     ngOnInit(): void {
@@ -35,5 +38,14 @@ export class ContractCreate implements OnInit {
         this.route.params
         .switchMap((params: Params) => this.companyService.getCompany(+params['id']))
         .subscribe(company => this.company = company);
+    }
+
+    createContract(): void {
+        var contract_id = this.contractService.createContract(this.contract);
+        if (contract_id) {
+            this.router.navigate(['/pages/contract/detail/', contract_id]);
+        } else {
+            alert("创建失败");
+        }
     }
 }
