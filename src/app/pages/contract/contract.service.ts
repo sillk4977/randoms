@@ -68,7 +68,7 @@ export class ContractService {
 
     createContract(contract: ContractModel): Promise<number> {
         return this.http
-        .post('/api/contract/', JSON.stringify(contract))
+        .post('/api/contract/', JSON.stringify(contract), {headers: this.headers})
         .toPromise()
         .then(function(res){
             if(res.status == 201){
