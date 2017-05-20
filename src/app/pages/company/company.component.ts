@@ -29,6 +29,7 @@ export class Company implements OnInit{
     }
 
     showCompanies(): boolean {
+        console.log(this.companies);
         return this.showCompaniesFlag;
     }
 

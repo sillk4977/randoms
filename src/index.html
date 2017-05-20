@@ -7,13 +7,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./assets/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 </head>
 <body>
+  {% csrf_token %}
   <app-root>Loading...</app-root>
 </body>
-<script src="../node_modules/jquery/dist/jquery.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./assets/jquery/dist/jquery.js"></script>
+<script src="./assets/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="./assets/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.js"></script>
 </html>
