@@ -37,13 +37,11 @@ export class ContractCreate implements OnInit {
         // get company
         this.route.params
         .switchMap((params: Params) => this.companyService.getCompany(+params['id']))
-        .subscribe(function(company){
-            this.company = company;
-            this.contract.company_id = company.id;
-        });
+        .subscribe((company) => {this.company = company;});
     }
 
     createContract(): void {
+        this.contract.company_id = this.company.id;
         var contract_id = this.contractService.createContract(this.contract);
         if (contract_id) {
             this.router.navigate(['/pages/contract/detail/', contract_id]);
