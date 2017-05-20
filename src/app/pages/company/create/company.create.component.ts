@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CompanyModel } from '../models';
 import { CompanyService } from '../company.service';
@@ -13,9 +14,12 @@ export class CompanyCreate {
 
     constructor(
         private companyService: CompanyService,
+        private router: Router,
     ){}
 
     createCompany(): void {
-        this.companyService.createCompany(this.company);
+        if(this.companyService.createCompany(this.company)){
+            this.router.navigate(['/pages/company/', ])
+        }
     }
 }

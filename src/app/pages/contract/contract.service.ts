@@ -48,11 +48,21 @@ const CONTRACT: ContractModel[] = [
 export class ContractService {
     private headers = new Headers({"Content-type": "application/json"});
 
-    getContracts(): Promise<ContractModel[]> {
-        return Promise.resolve(CONTRACT);
+    constructor(
+        private http: Http,
+    ){}
+
+    getContracts(companyId: number): Promise<ContractModel[]> {
+        return this.http
+        .get('/api/contract/company/' + companyId)
+        .toPromise()
+        .then(res => res.json() as ContractModel[])
     }
 
     getContract(id: number): Promise<ContractModel> {
-        return this.getContracts().then(contracts => contracts.find(contract => contract.id === id));
+        return this.http
+        .get('/api/contract/' + id)
+        .toPromise()
+        .then(res => res.json() as ContractModel);
     }
 }

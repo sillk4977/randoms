@@ -21,13 +21,18 @@ export class CompanyService {
     }
 
     getCompany(id: number): Promise<CompanyModel> {
-        return this.getCompanies().then(companies => companies.find(company => company.id === id));
-    }
-
-    createCompany(company: CompanyModel): void {
-        this.http
-        .post('/api/company/', JSON.stringify(company), {headers: this.headers})
+        return this.http
+        .get('/api/company/' + id)
         .toPromise()
         .then(res => res.json() as CompanyModel);
+    }
+
+    createCompany(company: CompanyModel): Promise<boolean> {
+        return this.http
+        .post('/api/company/', JSON.stringify(company), {headers: this.headers})
+        .toPromise()
+        .then(function(res){
+            return res.status == 201;
+        });
     }
 }
